@@ -1,24 +1,26 @@
-async function getWeatherData() {
-  try {
-    const response = await fetch(
-      "http://api.weatherapi.com/v1/current.json?key=2d2c3fc74eb549aaba1202946230807&q=paris",
-      {
-        mode: "cors",
-      }
-    );
-    const weatherData = await response.json();
+// async function getWeatherData() {
+//   const weatherDataURLs = [
+//     "http://api.weatherapi.com/v1/current.json?key=2d2c3fc74eb549aaba1202946230807&q=paris",
+//     "http://api.weatherapi.com/v1/forecast.json?key=2d2c3fc74eb549aaba1202946230807&q=paris",
+//   ];
+//   let weatherInfo;
 
-    if (!response.ok) {
-      const responseStatus = response.status;
-      const responseStatusText = response.statusText;
+//   try {
+//     const weatherData = await Promise.all(
+//       weatherDataURLs.map((url) =>
+//         fetch(url).then((response) => {
+//           if (!response.ok) {
+//             console.log(`Error ${response.status}: ${response.StatusText}`);
+//           }
+//           return response.json();
+//         })
+//       )
+//     );
+//     weatherInfo = weatherData;
+//   } catch (error) {
+//     console.log(error);
+//   }
+//   return console.log(weatherInfo);
+// }
 
-      console.log(`Error ${responseStatus}: ${responseStatusText}`);
-    } else {
-      console.log(weatherData);
-    }
-  } catch (error) {
-    console.log(error);
-  }
-}
-
-export default getWeatherData;
+// export default getWeatherData
