@@ -7,7 +7,7 @@ const displayCurrentWeather = (data) => {
 };
 
 const displayForecast = (data) => {
-  document.querySelector(".high").textContent = data.highest;
-  document.querySelector(".low").textContent = data.lowest;
+  document.querySelector(".high").textContent = `H:${data.highest}`;
+  document.querySelector(".low").textContent = `L:${data.lowest}`;
 };
 export { displayCurrentWeather, displayForecast };
