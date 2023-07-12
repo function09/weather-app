@@ -1,0 +1,39 @@
+const collectWeatherData = (data) => {
+  const realtimeData = {
+    country: data.location.country,
+    name: data.location.name,
+    region: data.location.region,
+    condition: data.current.condition.text,
+    temperatureF: data.current.temp_F,
+    temperatureC: data.current.temp_c,
+    humidity: data.current.humidity,
+  };
+  return realtimeData;
+};
+
+const displayWeather = (data) => {
+  document.querySelector(
+    ".location"
+  ).textContent = `${data.name}, ${data.country}`;
+  document.querySelector(".currentTemp").textContent = `${data.temperatureC}°C`;
+  document.querySelector(".condition").textContent = `${data.condition}`;
+};
+
+const fetchWeatherData = async () => {
+  const realtimeAPI =
+    "http://api.weatherapi.com/v1/current.json?key=1d38f27405c74273950235259231107&q=paris";
+
+  try {
+    const response = await fetch(realtimeAPI, { mode: "cors" });
+    const data = await response.json();
+    const test = collectWeatherData(data);
+    displayWeather(test);
+    if (!response.ok) {
+      console.log(`Error: ${response.status} ${response.statusText}`);
+    }
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export default fetchWeatherData;
