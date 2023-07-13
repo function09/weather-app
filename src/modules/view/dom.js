@@ -12,6 +12,14 @@ const displayForecast = (data) => {
   document.querySelector(".high").textContent = `H: ${data.highest} °C`;
   document.querySelector(".low").textContent = `L: ${data.lowest} °C`;
 
+  document.querySelectorAll(".day").forEach((day, index) => {
+    const dateText = day;
+    const dateArray = data.getThreeDayMaxAndMinTemp().dateArray[index];
+    dateText.textContent = new Date(dateArray).toLocaleString("en-EN", {
+      weekday: "long",
+    });
+  });
+
   document.querySelectorAll(".conditionIcon").forEach((icon, index) => {
     const weatherIcon = icon;
     weatherIcon.src =

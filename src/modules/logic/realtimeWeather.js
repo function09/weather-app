@@ -22,6 +22,7 @@ const fetchWeatherData = async () => {
     const data = await response.json();
     const dataObject = collectCurrentWeatherData(data);
     displayCurrentWeather(dataObject);
+    console.log(data);
     if (!response.ok) {
       console.log(`Error: ${response.status} ${response.statusText}`);
     }

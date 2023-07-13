@@ -10,17 +10,20 @@ const collectForecastData = (data) => {
       const minTempArray = [];
       const conditionIconsArray = [];
       const conditionTextArray = [];
+      const dateArray = [];
       this.threeDayForecast.forEach((forecast) => {
         maxTempArray.push(forecast.day.maxtemp_c);
         minTempArray.push(forecast.day.mintemp_c);
         conditionIconsArray.push(forecast.day.condition.icon);
         conditionTextArray.push(forecast.day.condition.text);
+        dateArray.push(forecast.date);
       });
       return {
         maxTempArray,
         minTempArray,
         conditionIconsArray,
         conditionTextArray,
+        dateArray,
       };
     },
   };
@@ -37,7 +40,6 @@ async function fetchForecastData() {
     const dataObject = collectForecastData(data);
     displayForecast(dataObject);
     collectForecastData(data);
-    console.log(data);
   } catch (error) {
     console.log(error);
   }
