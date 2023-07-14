@@ -13,16 +13,14 @@ const collectCurrentWeatherData = (data) => {
   return realtimeData;
 };
 
-const fetchWeatherData = async () => {
-  const realtimeAPI =
-    "http://api.weatherapi.com/v1/current.json?key=1d38f27405c74273950235259231107&q=paris";
+const fetchWeatherData = async (location) => {
+  const realtimeAPI = `http://api.weatherapi.com/v1/current.json?key=1d38f27405c74273950235259231107&q=${location}`;
 
   try {
     const response = await fetch(realtimeAPI, { mode: "cors" });
     const data = await response.json();
     const dataObject = collectCurrentWeatherData(data);
     displayCurrentWeather(dataObject);
-    console.log(data);
     if (!response.ok) {
       console.log(`Error: ${response.status} ${response.statusText}`);
     }

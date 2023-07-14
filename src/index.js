@@ -1,9 +1,14 @@
 import fetchForecastData from "./modules/logic/forecast";
 import fetchWeatherData from "./modules/logic/realtimeWeather";
+import { locationSubmit } from "./modules/view/dom";
 
-fetchWeatherData();
-fetchForecastData();
+fetchForecastData("Paris");
+fetchWeatherData("Paris");
 
-// console.log(
-//   new Date("2023-07-13").toLocaleString("en-EN", { weekday: "long" })
-// );
+locationSubmit.addEventListener("click", (event) => {
+  const location = document.querySelector("#inputLocation").value;
+
+  fetchWeatherData(location);
+  fetchForecastData(location);
+  event.preventDefault();
+});

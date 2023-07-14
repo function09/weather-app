@@ -1,7 +1,9 @@
+const locationSubmit = document.querySelector(".locationSubmit");
+
 const displayCurrentWeather = (data) => {
   document.querySelector(
     ".location"
-  ).textContent = `${data.name}, ${data.country}`;
+  ).textContent = `${data.name}, ${data.region}, ${data.country}`;
   document.querySelector(
     ".currentTemp"
   ).textContent = `${data.temperatureC} °C`;
@@ -39,4 +41,5 @@ const displayForecast = (data) => {
     }°C / ${data.getThreeDayMaxAndMinTemp().minTempArray[index]} °C`;
   });
 };
-export { displayCurrentWeather, displayForecast };
+
+export { locationSubmit, displayCurrentWeather, displayForecast };
