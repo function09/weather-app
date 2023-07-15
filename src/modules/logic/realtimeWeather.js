@@ -6,7 +6,7 @@ const collectCurrentWeatherData = (data) => {
     name: data.location.name,
     region: data.location.region,
     condition: data.current.condition.text,
-    temperatureF: data.current.temp_F,
+    temperatureF: data.current.temp_f,
     temperatureC: data.current.temp_c,
     humidity: data.current.humidity,
   };

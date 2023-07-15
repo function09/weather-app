@@ -2,25 +2,33 @@ import { displayForecast } from "../view/dom";
 
 const collectForecastData = (data) => {
   const forecastData = {
-    highest: data.forecast.forecastday[0].day.maxtemp_c,
-    lowest: data.forecast.forecastday[0].day.mintemp_c,
+    highestC: data.forecast.forecastday[0].day.maxtemp_c,
+    lowestC: data.forecast.forecastday[0].day.mintemp_c,
+    highestF: data.forecast.forecastday[0].day.maxtemp_f,
+    lowestF: data.forecast.forecastday[0].day.mintemp_f,
     threeDayForecast: data.forecast.forecastday,
     getThreeDayMaxAndMinTemp() {
-      const maxTempArray = [];
-      const minTempArray = [];
+      const maxTempArrayC = [];
+      const minTempArrayC = [];
+      const maxTempArrayF = [];
+      const minTempArrayF = [];
       const conditionIconsArray = [];
       const conditionTextArray = [];
       const dateArray = [];
       this.threeDayForecast.forEach((forecast) => {
-        maxTempArray.push(forecast.day.maxtemp_c);
-        minTempArray.push(forecast.day.mintemp_c);
+        maxTempArrayC.push(forecast.day.maxtemp_c);
+        minTempArrayC.push(forecast.day.mintemp_c);
+        maxTempArrayF.push(forecast.day.maxtemp_f);
+        minTempArrayF.push(forecast.day.mintemp_f);
         conditionIconsArray.push(forecast.day.condition.icon);
         conditionTextArray.push(forecast.day.condition.text);
         dateArray.push(forecast.date);
       });
       return {
-        maxTempArray,
-        minTempArray,
+        maxTempArrayC,
+        minTempArrayC,
+        maxTempArrayF,
+        minTempArrayF,
         conditionIconsArray,
         conditionTextArray,
         dateArray,
@@ -39,6 +47,7 @@ async function fetchForecastData(location) {
     const dataObject = collectForecastData(data);
     displayForecast(dataObject);
     collectForecastData(data);
+    console.log(collectForecastData(data));
   } catch (error) {
     console.log(error);
   }
