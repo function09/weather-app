@@ -6,14 +6,18 @@ fetchForecastData("Paris");
 fetchWeatherData("Paris");
 
 locationSubmit.addEventListener("click", (event) => {
-  const location = document.querySelector("#inputLocation").value;
+  const location = document.querySelector("#inputLocation");
+  const locationValue = location.value;
 
-  fetchWeatherData(location);
-  fetchForecastData(location);
+  fetchWeatherData(locationValue);
+  fetchForecastData(locationValue);
+
+  location.value = "";
   event.preventDefault();
 });
 
 toFahrenheitButton.addEventListener("click", (event) => {
+  const locationText = document.querySelector(".location").textContent;
   const currentWeather = document.querySelector(".currentWeather");
   const forecastContainer = document.querySelector(".forecastDataContainer");
   const currentWeatherValue = currentWeather.dataset.value;
@@ -26,8 +30,8 @@ toFahrenheitButton.addEventListener("click", (event) => {
   ) {
     currentWeather.dataset.value = "fahrenheit";
     forecastContainer.dataset.value = "fahrenheit";
-    fetchWeatherData("Paris");
-    fetchForecastData("Paris");
+    fetchWeatherData(locationText);
+    fetchForecastData(locationText);
     toFButton.target.textContent = "Display °C";
   } else if (
     currentWeatherValue === "fahrenheit" ||
@@ -35,8 +39,8 @@ toFahrenheitButton.addEventListener("click", (event) => {
   ) {
     currentWeather.dataset.value = "celsius";
     forecastContainer.dataset.value = "celsius";
-    fetchWeatherData("Paris");
-    fetchForecastData("Paris");
+    fetchWeatherData(locationText);
+    fetchForecastData(locationText);
     toFButton.target.textContent = "Display °F";
   }
 });
