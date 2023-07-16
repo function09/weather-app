@@ -14,7 +14,7 @@ const collectCurrentWeatherData = (data) => {
 };
 
 const fetchWeatherData = async (location) => {
-  const realtimeAPI = `http://api.weatherapi.com/v1/current.json?key=1d38f27405c74273950235259231107&q=${location}`;
+  const realtimeAPI = `https://api.weatherapi.com/v1/current.json?key=1d38f27405c74273950235259231107&q=${location}`;
 
   try {
     const response = await fetch(realtimeAPI, { mode: "cors" });

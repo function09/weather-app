@@ -40,7 +40,7 @@ const collectForecastData = (data) => {
 };
 
 async function fetchForecastData(location) {
-  const forecastAPI = `http://api.weatherapi.com/v1/forecast.json?key=1d38f27405c74273950235259231107&q=${location}&days=3`;
+  const forecastAPI = `https://api.weatherapi.com/v1/forecast.json?key=1d38f27405c74273950235259231107&q=${location}&days=3`;
 
   try {
     const response = await fetch(forecastAPI, { mode: "cors" });
