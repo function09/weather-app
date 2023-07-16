@@ -22,10 +22,10 @@ const fetchWeatherData = async (location) => {
     const dataObject = collectCurrentWeatherData(data);
     displayCurrentWeather(dataObject);
     if (!response.ok) {
-      console.log(`Error: ${response.status} ${response.statusText}`);
+      throw new Error(`Error: ${response.status} ${response.statusText}`);
     }
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 };
 

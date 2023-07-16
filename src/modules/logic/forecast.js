@@ -7,6 +7,7 @@ const collectForecastData = (data) => {
     highestF: data.forecast.forecastday[0].day.maxtemp_f,
     lowestF: data.forecast.forecastday[0].day.mintemp_f,
     threeDayForecast: data.forecast.forecastday,
+
     getThreeDayMaxAndMinTemp() {
       const maxTempArrayC = [];
       const minTempArrayC = [];
@@ -47,9 +48,8 @@ async function fetchForecastData(location) {
     const dataObject = collectForecastData(data);
     displayForecast(dataObject);
     collectForecastData(data);
-    console.log(collectForecastData(data));
   } catch (error) {
-    console.log(error);
+    throw new Error(error);
   }
 }
 

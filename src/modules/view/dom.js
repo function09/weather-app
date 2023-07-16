@@ -1,3 +1,9 @@
+import rain from "../../assets/images/rainyWeather.jpg";
+import sunny from "../../assets/images/sunnyWeather.jpg";
+import snowy from "../../assets/images/snowyWeather.jpg";
+import cloudy from "../../assets/images/cloudyWeather.jpg";
+import misty from "../../assets/images/mistyWeather.jpg";
+
 const locationSubmit = document.querySelector(".locationSubmit");
 const toFahrenheitButton = document.querySelector(".toF");
 
@@ -15,6 +21,31 @@ const displayCurrentWeather = (data) => {
   } else if (currentWeather.dataset.value === "fahrenheit") {
     currentTemp.textContent = `${data.temperatureF} °F`;
   }
+
+  const conditionText = condition.textContent.toLowerCase();
+
+  if (conditionText.includes("rain") || conditionText.includes("thunder")) {
+    document.body.style.backgroundImage = `url(${rain})`;
+  } else if (
+    conditionText.includes("sunny") ||
+    conditionText.includes("clear")
+  ) {
+    document.body.style.backgroundImage = `url(${sunny})`;
+  } else if (
+    conditionText.includes("cloudy") ||
+    conditionText.includes("overcast")
+  ) {
+    document.body.style.backgroundImage = `url(${cloudy})`;
+  } else if (
+    conditionText.includes("snow") ||
+    conditionText.includes("sleet") ||
+    conditionText.includes("freezing") ||
+    conditionText.includes("ice")
+  ) {
+    document.body.style.backgroundImage = `url(${snowy})`;
+  } else if (conditionText.includes("mist")) {
+    document.body.style.backgroundImage = `url(${misty})`;
+  }
 };
 
 const displayForecast = (data) => {
@@ -28,11 +59,11 @@ const displayForecast = (data) => {
   const forecastTemp = document.querySelectorAll(".forecastTemp");
 
   if (currentWeather.dataset.value === "celsius") {
-    high.textContent = `H: ${data.highestC} °C`;
-    low.textContent = `L: ${data.lowestC} °C`;
+    high.textContent = ` ${data.highestC} °C`;
+    low.textContent = ` ${data.lowestC} °C `;
   } else if (currentWeather.dataset.value === "fahrenheit") {
-    high.textContent = `H: ${data.highestF} °F`;
-    low.textContent = `L: ${data.lowestF} °F`;
+    high.textContent = ` ${data.highestF} °F`;
+    low.textContent = ` ${data.lowestF} °F`;
   }
 
   threeDayForecast.forEach((day, index) => {

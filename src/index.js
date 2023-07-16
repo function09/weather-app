@@ -1,3 +1,4 @@
+import "./style.css";
 import fetchForecastData from "./modules/logic/forecast";
 import fetchWeatherData from "./modules/logic/realtimeWeather";
 import { locationSubmit, toFahrenheitButton } from "./modules/view/dom";
@@ -11,6 +12,10 @@ locationSubmit.addEventListener("click", (event) => {
 
   fetchWeatherData(locationValue);
   fetchForecastData(locationValue);
+
+  if (locationValue === "") {
+    throw new Error("Location cannot be blank!");
+  }
 
   location.value = "";
   event.preventDefault();

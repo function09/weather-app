@@ -1,0 +1,119 @@
+* {
+    margin: none;
+    padding: none;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 98vh;
+    width: 90vw;
+    gap: 10%;
+    font-size: 1.4rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+}
+ 
+.parentContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap:45px;
+    background-color: #171717;
+    opacity: 0.8;
+    color: #f5f5f5;
+    border-radius: 12px;
+    height: 90vh;
+    width: 65vw;
+}
+
+.currentWeather {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 15vh;
+    gap: 10px;
+    margin: 25px;
+}
+
+.currentTemp {
+    font-size: 2.5rem;
+}
+
+.highLow {
+    display: flex;
+    flex-direction: row;
+    gap: 5px
+}
+
+.forecastDataContainer{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 100px; 
+    width: 80%;
+    height: 30%;
+}
+
+.forecast {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    width: 120px;
+    margin: 25px;
+}
+
+.day {
+    display: flex;
+    justify-content: center;
+}
+
+.conditionIcon {
+    display: flex;
+    justify-content: center;
+}
+
+.conditionText {
+    display: flex;
+    justify-content: center;
+    width: 300px;
+    margin: 15px;
+}
+
+.forecastTemp {
+    display: flex;
+    justify-content: center;
+    width: 180px;
+}
+
+form {
+    height: 10vh;
+    gap: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+input {
+    padding: 12px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+}
+
+button {
+    border: 1px solid whitesmoke;
+    background: none;
+    color: #fdfeff;
+    font-size: 1.2rem;
+    border-radius: 12px;
+    padding:10px;
+    cursor: pointer;
+}
